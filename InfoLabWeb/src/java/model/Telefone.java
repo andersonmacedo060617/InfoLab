@@ -26,7 +26,7 @@ public class Telefone implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Basic(optional = false)
@@ -36,6 +36,10 @@ public class Telefone implements Serializable {
     @Basic(optional = false)
     @Column(nullable = false)
     private boolean residencial;
+    
+    @JoinColumn(name = "USUARIO_ID", referencedColumnName = "ID", nullable = false)
+    @ManyToOne(optional = false)
+    private Usuario idusuario;
    
 
     public Telefone(String numero, boolean residencial) {

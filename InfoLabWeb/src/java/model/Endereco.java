@@ -5,6 +5,7 @@
  */
 package model;
 
+import com.sun.org.glassfish.gmbal.IncludeSubclass;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -24,7 +25,7 @@ public class Endereco implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
     @Basic(optional = false)
@@ -55,9 +56,6 @@ public class Endereco implements Serializable {
     @Column(nullable = false, length = 100)
     private String pais;
     
-    @JoinColumn(name = "USUARIO_ID", referencedColumnName = "ID", nullable = false)
-    @OneToOne(optional = false)
-    private Usuario usuarioId;
 
     public Endereco(String rua, String numero, String complemento, String bairro, String cidade, String uf, String pais) {
         this.rua = rua;
@@ -137,13 +135,7 @@ public class Endereco implements Serializable {
         this.pais = pais;
     }
 
-    public Usuario getUsuarioId() {
-        return usuarioId;
-    }
-
-    public void setUsuarioId(Usuario usuarioId) {
-        this.usuarioId = usuarioId;
-    }
+    
     
     
 

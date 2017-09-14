@@ -7,6 +7,7 @@ package controller;
 
 import controller.action.ICommand;
 import controller.action.impl.CallLoginPage;
+import controller.action.impl.CallValidaAcesso;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
@@ -28,7 +29,8 @@ public class HomeController extends HttpServlet {
     
     //Adicionar ações
     static{
-        comandos.put("login", new CallLoginPage());
+        comandos.put("LOGIN", new CallLoginPage());
+        comandos.put("LOGAR", new CallValidaAcesso());
     }
     
     
@@ -39,7 +41,8 @@ public class HomeController extends HttpServlet {
         String acao = request.getParameter("ac");
         acao = acao== null?"login":acao;
         try {
-            comandos.get(acao).execute(request, response);
+            //upper para resolver problema de case
+            comandos.get(acao.toUpperCase()).execute(request, response);
         } catch (Exception ex) {
             //Tratar erro
         }

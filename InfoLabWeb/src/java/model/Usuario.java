@@ -28,7 +28,7 @@ public class Usuario implements Serializable{
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
     @Basic(optional = false)
@@ -40,7 +40,7 @@ public class Usuario implements Serializable{
     private String cpf;
     
     @Basic(optional = false)
-    @Column(nullable = false, length = 45)
+    @Column(nullable = false, length = 45, unique = true)
     private String login;
     
     @Basic(optional = false)
@@ -51,7 +51,7 @@ public class Usuario implements Serializable{
     @Column(nullable = false)
     private boolean cliente;
     
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idusuario")
     private List<Telefone> telefones;
     
     @JoinColumn(name = "ENDERECO_ID", referencedColumnName = "ID", nullable = false)

@@ -33,18 +33,29 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
+                
                 <div class="login-panel panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">Login InfoLab Web</h3>
                     </div>
+                    
                     <div class="panel-body">
-                        <form role="form">
+                        <c:if test="${requestScope.erro != null}" >
+                            <div class="alert alert-danger alert-dismissible">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                <strong>${requestScope.erro}</strong>
+                            </div>
+                        </c:if>
+                        <form role="form" action="Home?ac=logar" method="POST">
                             <fieldset>
+                                                                    
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="E-mail" name="cpEmail" type="email" autofocus>
+                                    <input class="form-control" placeholder="Login" name="cpLogin" type="text"  autofocus>
                                 </div>
+                                
+                                
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Senha" name="cpSenha" type="password" value="">
+                                    <input class="form-control" placeholder="Senha" name="cpSenha" type="password">
                                 </div>
                                 <div class="checkbox">
                                     <label>
@@ -52,7 +63,7 @@
                                     </label>
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
-                                <a href="index.html" class="btn btn-lg btn-success btn-block">Login</a>
+                                <input type="submit" class="btn btn-lg btn-success btn-block" value="Login" />
                             </fieldset>
                         </form>
                     </div>

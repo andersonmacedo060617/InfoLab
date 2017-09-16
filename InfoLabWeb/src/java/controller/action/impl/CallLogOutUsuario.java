@@ -12,23 +12,16 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author aluno
+ * @author Anderson2
  */
-public class CallHomePage implements ICommand{
+public class CallLogOutUsuario implements ICommand{
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        
-        if(request.getSession().getAttribute("user") == null){
-            request.setAttribute("erro", "Realize o login no sistema");
+        request.getSession().removeAttribute("user");
+        request.getSession().removeAttribute("userCliente");
+        request.setAttribute("msg", "Usuario Deslogado!");
             new CallLoginPage().execute(request, response);
-        }else{
-            RequestDispatcher rd = request.getRequestDispatcher("template.jsp?page=home");
-            request.setAttribute("page", "home");
-            rd.forward(request, response);
-        }
-        
-        
     }
     
 }

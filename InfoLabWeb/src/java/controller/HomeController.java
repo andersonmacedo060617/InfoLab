@@ -6,6 +6,7 @@
 package controller;
 
 import controller.action.ICommand;
+import controller.action.impl.CallLogOutUsuario;
 import controller.action.impl.CallLoginPage;
 import controller.action.impl.CallValidaAcesso;
 import java.io.IOException;
@@ -31,6 +32,7 @@ public class HomeController extends HttpServlet {
     static{
         comandos.put("LOGIN", new CallLoginPage());
         comandos.put("LOGAR", new CallValidaAcesso());
+        comandos.put("LOGOUT", new CallLogOutUsuario());
     }
     
     

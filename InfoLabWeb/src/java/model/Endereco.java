@@ -56,6 +56,10 @@ public class Endereco implements Serializable {
     @Column(nullable = false, length = 100)
     private String pais;
     
+    @JoinColumn(name = "USUARIO_ID", referencedColumnName = "ID", nullable = false)
+    @OneToOne(optional = false)
+    private Usuario usuario;
+    
 
     public Endereco(String rua, String numero, String complemento, String bairro, String cidade, String uf, String pais) {
         this.rua = rua;
@@ -134,6 +138,15 @@ public class Endereco implements Serializable {
     public void setPais(String pais) {
         this.pais = pais;
     }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+    
 
     
     

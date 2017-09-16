@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,6 +46,13 @@
                                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                                 <strong>${requestScope.erro}</strong>
                             </div>
+                        </c:if>
+                        <c:if test="${requestScope.msg != null}" >
+                            <div class="alert alert-success alert-dismissible">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                <strong>${requestScope.msg}</strong>
+                            </div>
+                            
                         </c:if>
                         <form role="form" action="Home?ac=logar" method="POST">
                             <fieldset>

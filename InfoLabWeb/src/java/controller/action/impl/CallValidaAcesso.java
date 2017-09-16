@@ -6,6 +6,7 @@
 package controller.action.impl;
 
 import controller.action.ICommand;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Usuario;
@@ -26,6 +27,7 @@ public class CallValidaAcesso implements ICommand{
         
         if(user != null){
             request.getSession().setAttribute("user", user);
+            request.getSession().setAttribute("userCliente", user.isCliente());
             new CallHomePage().execute(request, response);
         }else{
             request.setAttribute("erro", "Login ou senha Incorreta!!!");

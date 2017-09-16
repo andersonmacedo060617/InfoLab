@@ -54,9 +54,7 @@ public class Usuario implements Serializable{
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idusuario")
     private List<Telefone> telefones;
     
-    @JoinColumn(name = "ENDERECO_ID", referencedColumnName = "ID", nullable = false)
-    @OneToOne(optional = false)
-    private Endereco endereco;
+    
     
     @OneToMany(mappedBy = "idusuario")
     private List<ExamesUsuario> examesUsuario;
@@ -135,14 +133,7 @@ public class Usuario implements Serializable{
         this.telefones = telefones;
     }
 
-    public Endereco getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
-    }
-
+    
     public List<ExamesUsuario> getExamesUsuario() {
         return examesUsuario;
     }

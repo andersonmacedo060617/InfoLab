@@ -16,14 +16,30 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author aluno
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "Usuario.findAllClientes", query = "SELECT u FROM Usuario u where u.cliente = 1"),
+    @NamedQuery(name = "Usuario.findClienteById", query = "SELECT u FROM Usuario u where u.cliente = 1 and u.id = :id"),
+    @NamedQuery(name = "Usuario.findAllClientesByLogin", query = "SELECT u FROM Usuario u where u.cliente = 1 and u.login = :login"),
+    
+    @NamedQuery(name = "Usuario.findAllFuncionarios", query = "SELECT u FROM Usuario u where u.cliente = 0"),
+    @NamedQuery(name = "Usuario.findFuncionarioById", query = "SELECT u FROM Usuario u where u.cliente = 0 and u.id = :id"),
+    @NamedQuery(name = "Usuario.findAllFuncionarioByLogin", query = "SELECT u FROM Usuario u where u.cliente = 0 and u.login = :login"),
+
+    @NamedQuery(name = "Usuario.findAllUsuarios", query = "SELECT u FROM Usuario u"),
+    @NamedQuery(name = "Usuario.findUsuarioByLoginSenha", query = "SELECT u FROM Usuario u where u.login = :login and u.senha =:senha"),
+    @NamedQuery(name = "Usuario.findUsuarioByLoginOrCPF", query = "SELECT u FROM Usuario u where UPPER(u.login) = UPPER(:login) or UPPER(u.cpf)=UPPER(:cpf)")
+})
 public class Usuario implements Serializable{
 
     private static final long serialVersionUID = 1L;

@@ -18,9 +18,14 @@ public class CallLoginPage implements ICommand{
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        
-        RequestDispatcher rd = request.getRequestDispatcher("Pages/login.jsp");
-        rd.forward(request, response);
+        if(request.getSession().getAttribute("user")== null){
+            RequestDispatcher rd = request.getRequestDispatcher("Pages/login.jsp");
+            rd.forward(request, response);
+        }else{
+            RequestDispatcher rd = request.getRequestDispatcher("template.jsp?page=home");
+            rd.forward(request, response);
+        }
+
     }
     
 }

@@ -5,6 +5,7 @@
  */
 package model.dao;
 
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
@@ -36,6 +37,80 @@ public class UsuarioDAO extends BaseDAO{
             return null;
         }finally{
             this.close();
+        }
+    }
+    
+    public List<Usuario> findUsuarioLoginCpf(String login, String cpf){
+        this.open();
+        
+        try{
+            Query q = em.createNamedQuery("Usuario.findUsuarioByLoginOrCPF");
+            q.setParameter("login", login);
+            q.setParameter("cpf", cpf);
+            return q.getResultList();
+        }finally{
+            this.close();
+        }
+    }
+
+    public List<Usuario> findAllClientes() {
+        this.open();
+        
+        try{
+            Query q = em.createNamedQuery("Usuario.findAllClientes");
+            return q.getResultList();
+        }finally{
+            this.close();
+        }
+    }
+    
+    public List<Usuario> findClienteById(int Id) {
+        this.open();
+        
+        try{
+            Query q = em.createNamedQuery("Usuario.findClienteById");
+            q.setParameter("id", Id);
+            return q.getResultList();
+        }finally{
+            this.close();
+        }
+    }
+    
+    
+    
+    public List<Usuario> findAllFuncionarios() {
+        this.open();
+        
+        try{
+            Query q = em.createNamedQuery("Usuario.findAllFuncionarios");
+            return q.getResultList();
+        }finally{
+            this.close();
+        }
+    }
+    
+    public List<Usuario> findFuncionarioById(int Id) {
+        this.open();
+        
+        try{
+            Query q = em.createNamedQuery("Usuario.findFuncionarioById");
+            q.setParameter("id", Id);
+            return q.getResultList();
+        }finally{
+            this.close();
+        }
+    }
+    
+    public void SaveUsuario(Usuario usuario){
+        this.open();
+        try{
+            em.getTransaction().begin();
+            em.persist(usuario);
+            em.getTransaction().commit();
+        }catch(Exception ex){
+            throw ex;
+        }finally{
+            close();
         }
         
     }

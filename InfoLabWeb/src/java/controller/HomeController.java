@@ -6,9 +6,15 @@
 package controller;
 
 import controller.action.ICommand;
+import controller.action.impl.cliente.CallClienteIndex;
+import controller.action.impl.funcionario.CallFuncionarioIndex;
 import controller.action.impl.CallLogOutUsuario;
 import controller.action.impl.CallLoginPage;
 import controller.action.impl.CallValidaAcesso;
+import controller.action.impl.cliente.CallClientePageAdd;
+import controller.action.impl.cliente.CallClienteSave;
+import controller.action.impl.funcionario.CallFuncionarioPageAdd;
+import controller.action.impl.funcionario.CallFuncionarioSave;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
@@ -33,6 +39,12 @@ public class HomeController extends HttpServlet {
         comandos.put("LOGIN", new CallLoginPage());
         comandos.put("LOGAR", new CallValidaAcesso());
         comandos.put("LOGOUT", new CallLogOutUsuario());
+        comandos.put("CLIENTE_INDEX", new CallClienteIndex());
+        comandos.put("FUNCIONARIO_INDEX", new CallFuncionarioIndex());
+        comandos.put("CLIENTE_ADD", new CallClientePageAdd());
+        comandos.put("CLIENTE_SAVE", new CallClienteSave());
+        comandos.put("FUNCIONARIO_ADD", new CallFuncionarioPageAdd());
+        comandos.put("FUNCIONARIO_SAVE", new CallFuncionarioSave());
     }
     
     

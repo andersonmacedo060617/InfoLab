@@ -11,6 +11,7 @@ body {
 }
 #page-wrapper {
   padding: 0 15px;
+  padding-top: 20px;
   min-height: 568px;
   background-color: white;
 }
@@ -19,6 +20,7 @@ body {
     position: inherit;
     margin: 0 0 0 250px;
     padding: 0 30px;
+    padding-top: 20px;
     border-left: 1px solid #e7e7e7;
   }
 }

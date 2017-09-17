@@ -10,22 +10,22 @@
         <ul class="nav" id="side-menu">
             
             <li>
-                <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                <a href="Home"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
             </li>
             <li>
                 <a href="#"><i class="fa fa-users"></i> Usuarios<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="flot.html">Clientes</a>
+                        <a href="Home?ac=cliente_Index">Clientes</a>
                     </li>
                     <li>
-                        <a href="morris.html">Funcionarios</a>
+                        <a href="Home?ac=funcionario_Index">Funcionarios</a>
                     </li>
                 </ul>
                 <!-- /.nav-second-level -->
             </li>
             <li>
-                <a href="tables.html"><i class="fa fa-list-alt"></i> Exames</a>
+                <a href="Home?ac=exames_Index"><i class="fa fa-list-alt"></i> Exames</a>
             </li>
             
         </ul>

@@ -9,14 +9,14 @@
 <html lang="en">
 
 <head>
-
+    <link href="img/icon02-2.png" rel="shortcut icon" type="image/x-icon" />
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+    <title>Info Lab - Sistema de Laboratorios</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
@@ -67,6 +67,17 @@
             
         </nav>
         <div id="page-wrapper">
+            
+            <c:if test="${requestScope.erro != null}">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="alert alert-danger alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                            <strong>${requestScope.erro}</strong>
+                        </div>
+                    </div>
+                </div>
+            </c:if>
             <c:if test="${param.page != null}">
                 <jsp:include page="Pages/${param.page}.jsp"/>
             </c:if>

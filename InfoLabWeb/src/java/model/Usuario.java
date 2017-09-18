@@ -21,6 +21,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.xml.bind.annotation.XmlRootElement;
+import model.enumModel.ESexo;
 
 /**
  *
@@ -67,13 +68,25 @@ public class Usuario implements Serializable{
     @Column(nullable = false)
     private boolean cliente;
     
+    @Basic(optional = false)
+    @Column(nullable = false)
+    private boolean ativo;
+    
+    @Basic(optional = false)
+    @Column(nullable = false)
+    private ESexo sexo; 
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idusuario")
     private List<Telefone> telefones;
     
     
-    
     @OneToMany(mappedBy = "idusuario")
     private List<ExamesUsuario> examesUsuario;
+    
+    @JoinColumn(name = "ENDERECO_ID", referencedColumnName = "ID", nullable = true)
+    @OneToOne
+    private Endereco endereco;
+    
     
     
     public Usuario() {
@@ -158,6 +171,35 @@ public class Usuario implements Serializable{
         this.examesUsuario = examesUsuario;
     }
 
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+    
+    
+    
+    
+
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
+    }
+
+    public ESexo getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(ESexo sexo) {
+        this.sexo = sexo;
+    }
+
+    
     
     
     

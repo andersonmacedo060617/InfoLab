@@ -10,8 +10,11 @@ import controller.action.impl.CallHomePage;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Endereco;
 import model.Usuario;
+import model.dao.EnderecoDAO;
 import model.dao.UsuarioDAO;
+import model.enumModel.ESexo;
 
 /**
  *
@@ -20,6 +23,7 @@ import model.dao.UsuarioDAO;
 public class CallFuncionarioSave implements ICommand{
 
     private Usuario usuario;
+    private Endereco endereco;
     
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -38,6 +42,7 @@ public class CallFuncionarioSave implements ICommand{
                 RequestDispatcher rd = request.getRequestDispatcher("template.jsp?page=funcionarioAdd");
                 request.setAttribute("erroGravar", "Login e/ou senha vazio");
                 request.setAttribute("retornoUsuario", usuario);
+                request.setAttribute("retornoEndereco", endereco);
                 rd.forward(request, response);
             }else 
                 //Login ou CPF já existem no banco
@@ -45,11 +50,16 @@ public class CallFuncionarioSave implements ICommand{
                 RequestDispatcher rd = request.getRequestDispatcher("template.jsp?page=funcionarioAdd");
                 request.setAttribute("erroGravar", "Login e/ou CPF informado já existe");
                 request.setAttribute("retornoUsuario", usuario);
+                request.setAttribute("retornoEndereco", endereco);
                 rd.forward(request, response);
             }else{
                 //Ok para gravar
                 try{
                     new UsuarioDAO().SaveUsuario(usuario);
+                    
+                    endereco.setUsuario(usuario);
+                    
+                    new EnderecoDAO().SaveEndereco(endereco);
                     RequestDispatcher rd = request.getRequestDispatcher("Home?ac=funcionario_Index");
                     request.setAttribute("msgSucesso", "Funcionario Cadastrado com Sucesso!");
                     rd.forward(request, response);
@@ -69,7 +79,25 @@ public class CallFuncionarioSave implements ICommand{
         usuario.setCpf(request.getParameter("cpCpf"));
         usuario.setLogin(request.getParameter("cpLogin"));
         usuario.setSenha(request.getParameter("cpSenha"));
+        usuario.setAtivo(
+                request.getParameter("ckAtivo") != null &&
+                "1".equals(request.getParameter("ckAtivo"))
+        );
+        if(request.getParameter("rdSexo") != null){
+            usuario.setSexo((request.getParameter("rdSexo").equalsIgnoreCase("Masculino"))?ESexo.Masculino:ESexo.Feminino);
+        }
+        
         usuario.setCliente(false);
+        
+        endereco = new Endereco(
+                        request.getParameter("cpRua"), 
+                        request.getParameter("cpNumero"), 
+                        request.getParameter("cpComplemento"), 
+                        request.getParameter("cpBairro"), 
+                        request.getParameter("cpCidade"), 
+                        request.getParameter("cpUf"), 
+                        request.getParameter("cpPais")
+                    );
     }
     
 }

@@ -31,6 +31,8 @@
                                 <th>Nome</th>
                                 <th>CPF</th>
                                 <th>Login</th>
+                                <th>Sexo</th>
+                                <th>Ativo</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -44,6 +46,14 @@
                                 <td>${cliente.nome}</td>
                                 <td>${cliente.cpf}</td>
                                 <td>${cliente.login}</td>
+                                <td>${cliente.sexo}</td>
+                                <td><c:if test="${cliente.ativo}">
+                                        <i class="fa fa-check-square-o" style="color: green;" title="Sim"></i>
+                                    </c:if>
+                                    <c:if test="${!cliente.ativo}">
+                                        <i class="fa fa-square-o" style="color: red;" title="Não"></i>
+                                    </c:if>
+                                </td>
                                 <td align="center">
                                     <a class="btn btn-info" title="Visualizar" href="Home?ac=cliente_view&id=${cliente.id}"><i class="fa fa-eye"></i> </a>
                                     <a class="btn btn-warning" title="Alterar" href="Home?ac=cliente_alter&id=${cliente.id}"><i class="fa fa-pencil-square-o"></i> </a>

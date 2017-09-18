@@ -23,6 +23,8 @@
                                 <th>Nome</th>
                                 <th>CPF</th>
                                 <th>Login</th>
+                                <th>Sexo</th>
+                                <th>Ativo</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -33,6 +35,14 @@
                                 <td>${funcionario.nome}</td>
                                 <td>${funcionario.cpf}</td>
                                 <td>${funcionario.login}</td>
+                                <td>${funcionario.sexo}</td>
+                                <td><c:if test="${funcionario.ativo}">
+                                        <i class="fa fa-check-square-o" style="color: green;" title="Sim"></i>
+                                    </c:if>
+                                    <c:if test="${!funcionario.ativo}">
+                                        <i class="fa fa-square-o" style="color: red;" title="Não"></i>
+                                    </c:if>
+                                </td>
                                 <td align="center">
                                     <a class="btn btn-info" title="Visualizar" href="Home?ac=funcionario_view&id=${funcionario.id}"><i class="fa fa-eye"></i> </a>
                                     <a class="btn btn-warning" title="Alterar" href="Home?ac=funcionario_alter&id=${funcionario.id}"><i class="fa fa-pencil-square-o"></i> </a>

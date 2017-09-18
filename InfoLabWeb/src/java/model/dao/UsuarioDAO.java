@@ -105,6 +105,7 @@ public class UsuarioDAO extends BaseDAO{
         this.open();
         try{
             em.getTransaction().begin();
+            
             em.persist(usuario);
             em.getTransaction().commit();
         }catch(Exception ex){

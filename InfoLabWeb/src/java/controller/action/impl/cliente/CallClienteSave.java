@@ -74,7 +74,7 @@ public class CallClienteSave implements ICommand{
         }
     }
     
-    public void MontaUsuarioComRequest(HttpServletRequest request){
+    private void MontaUsuarioComRequest(HttpServletRequest request){
         usuario = new Usuario();
         usuario.setNome(request.getParameter("cpNome"));
         usuario.setCpf(request.getParameter("cpCpf"));

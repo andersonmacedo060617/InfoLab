@@ -13,6 +13,10 @@ import controller.action.impl.CallLoginPage;
 import controller.action.impl.CallValidaAcesso;
 import controller.action.impl.cliente.CallClientePageAdd;
 import controller.action.impl.cliente.CallClienteSave;
+import controller.action.impl.exame.CallExamePageAdd;
+import controller.action.impl.exame.CallExameSave;
+import controller.action.impl.exame.CallPageExamesIndex;
+import controller.action.impl.ExamesUsuario.CallPageMeusExames;
 import controller.action.impl.funcionario.CallFuncionarioPageAdd;
 import controller.action.impl.funcionario.CallFuncionarioSave;
 import java.io.IOException;
@@ -36,15 +40,28 @@ public class HomeController extends HttpServlet {
     
     //Adicionar ações
     static{
-        comandos.put("LOGIN", new CallLoginPage());
-        comandos.put("LOGAR", new CallValidaAcesso());
-        comandos.put("LOGOUT", new CallLogOutUsuario());
-        comandos.put("CLIENTE_INDEX", new CallClienteIndex());
-        comandos.put("FUNCIONARIO_INDEX", new CallFuncionarioIndex());
-        comandos.put("CLIENTE_ADD", new CallClientePageAdd());
-        comandos.put("CLIENTE_SAVE", new CallClienteSave());
-        comandos.put("FUNCIONARIO_ADD", new CallFuncionarioPageAdd());
-        comandos.put("FUNCIONARIO_SAVE", new CallFuncionarioSave());
+        //Acesso ao sistema
+        comandos.put("LOGIN".toUpperCase(), new CallLoginPage());
+        comandos.put("LOGAR".toUpperCase(), new CallValidaAcesso());
+        comandos.put("LOGOUT".toUpperCase(), new CallLogOutUsuario());
+        
+        //Clientes
+        comandos.put("CLIENTE_INDEX".toUpperCase(), new CallClienteIndex());
+        comandos.put("CLIENTE_ADD".toUpperCase(), new CallClientePageAdd());
+        comandos.put("CLIENTE_SAVE".toUpperCase(), new CallClienteSave());
+        
+        //Funcionarios
+        comandos.put("FUNCIONARIO_INDEX".toUpperCase(), new CallFuncionarioIndex());
+        comandos.put("FUNCIONARIO_ADD".toUpperCase(), new CallFuncionarioPageAdd());
+        comandos.put("FUNCIONARIO_SAVE".toUpperCase(), new CallFuncionarioSave());
+        
+        //Exames Usuario
+        comandos.put("meus_exames".toUpperCase(), new CallPageMeusExames());
+        
+        //Tipos de Exame
+        comandos.put("exames_Index".toUpperCase(), new CallPageExamesIndex());
+        comandos.put("exame_add".toUpperCase(), new CallExamePageAdd());
+        comandos.put("tipoExame_Save".toUpperCase(), new CallExameSave());
     }
     
     

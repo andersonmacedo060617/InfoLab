@@ -17,6 +17,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -25,6 +27,10 @@ import javax.persistence.OneToOne;
  * @author aluno
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "Exame.findAllExames", query = "SELECT e FROM Exame e"),
+    
+})
 public class Exame implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -34,7 +40,7 @@ public class Exame implements Serializable {
 
     @Basic(optional = false)
     @Column(nullable = false, length = 100)
-    private double nomeExame;
+    private String nomeExame;
     
     @Basic(optional = false)
     @Column(nullable = false)
@@ -62,18 +68,18 @@ public class Exame implements Serializable {
     public Exame() {
     }
 
-    public Exame(double nomeExame, double valor, int horasEntrega, int horasJejum) {
+    public Exame(String nomeExame, double valor, int horasEntrega, int horasJejum) {
         this.nomeExame = nomeExame;
         this.valor = valor;
         this.horasEntrega = horasEntrega;
         this.horasJejum = horasJejum;
     }
 
-    public double getNomeExame() {
+    public String getNomeExame() {
         return nomeExame;
     }
 
-    public void setNomeExame(double nomeExame) {
+    public void setNomeExame(String nomeExame) {
         this.nomeExame = nomeExame;
     }
 

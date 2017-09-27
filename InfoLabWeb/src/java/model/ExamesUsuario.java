@@ -15,6 +15,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import org.eclipse.persistence.jpa.jpql.parser.DateTime;
 
@@ -23,6 +25,10 @@ import org.eclipse.persistence.jpa.jpql.parser.DateTime;
  * @author aluno
  */
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "ExameUsuario.findAllExamesUsuario", query = "SELECT eu FROM ExamesUsuario eu INNER JOIN Exame e INNER JOIN Usuario u"),
+    
+})
 public class ExamesUsuario implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -25,7 +25,10 @@
                 <!-- /.nav-second-level -->
             </li>
             <li>
-                <a href="Home?ac=exames_Index"><i class="fa fa-list-alt"></i> Exames</a>
+                <a href="Home?ac=examesUsuario_Index"><i class="fa fa-list-alt"></i> Gestão de Exames</a>
+            </li>
+            <li>
+                <a href="Home?ac=exames_Index"><i class="fa fa-list-alt"></i> Tipos de Exames</a>
             </li>
             
         </ul>

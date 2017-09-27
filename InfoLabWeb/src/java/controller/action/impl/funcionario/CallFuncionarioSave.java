@@ -60,9 +60,9 @@ public class CallFuncionarioSave implements ICommand{
                     endereco.setUsuario(usuario);
                     
                     new EnderecoDAO().SaveEndereco(endereco);
-                    RequestDispatcher rd = request.getRequestDispatcher("Home?ac=funcionario_Index");
+                    
                     request.setAttribute("msgSucesso", "Funcionario Cadastrado com Sucesso!");
-                    rd.forward(request, response);
+                    response.sendRedirect("Home?ac=funcionario_Index");
                 }catch(Exception ex){//Falha ao gravar
                     RequestDispatcher rd = request.getRequestDispatcher("template.jsp?page=funcionarioAdd");
                     request.setAttribute("erroGravar", "Ocorreu uma falha ao salvar o registro.<br> Por favor tente novamente.");

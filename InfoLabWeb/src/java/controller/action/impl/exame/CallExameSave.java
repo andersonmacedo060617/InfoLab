@@ -42,9 +42,8 @@ public class CallExameSave implements ICommand{
                 try{
                     new ExameDAO().SaveExame(exame);
                     
-                    RequestDispatcher rd = request.getRequestDispatcher("Home?ac=exames_Index");
                     request.setAttribute("msgSucesso", "Tipo de exame Cadastrado com Sucesso!");
-                    rd.forward(request, response);
+                    response.sendRedirect("Home?ac=exames_Index");
                 }catch(Exception ex){
                     RequestDispatcher rd = request.getRequestDispatcher("template.jsp?page=tipoExameAdd");
                     request.setAttribute("erroGravar", "Ocorreu uma falha ao salvar o registro.<br> Por favor tente novamente.");
@@ -61,7 +60,7 @@ public class CallExameSave implements ICommand{
         exame.setNomeExame(request.getParameter("cpNomeExame"));
         exame.setHorasEntrega(Integer.parseInt(request.getParameter("cpHoraEntrega")));
         exame.setHorasJejum(Integer.parseInt(request.getParameter("cpHoraJejum")));
-        exame.setValor(Double.parseDouble(request.getParameter("cpHoraEntrega")));
+        exame.setValor(Double.parseDouble(request.getParameter("cpValor")));
     }
     
 }

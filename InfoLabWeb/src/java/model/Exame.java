@@ -29,7 +29,7 @@ import javax.persistence.OneToOne;
 @Entity
 @NamedQueries({
     @NamedQuery(name = "Exame.findAllExames", query = "SELECT e FROM Exame e"),
-    
+    @NamedQuery(name = "Exame.findExameById", query = "SELECT e FROM Exame e WHERE e.id = :id"),
 })
 public class Exame implements Serializable {
 

@@ -33,11 +33,12 @@
                                 <td>${exame.nomeExame}</td>
                                 <td>${exame.horasJejum}</td>
                                 <td>${exame.horasEntrega}</td>
-                                <td>${exame.valor}</td>
+                                <td>R$ ${exame.valor}</td>
                                 <td align="center">
                                     <a class="btn btn-info" title="Visualizar" href="Home?ac=exame_view&id=${exame.id}"><i class="fa fa-eye"></i> </a>
                                     <a class="btn btn-warning" title="Alterar" href="Home?ac=exame_alter&id=${exame.id}"><i class="fa fa-pencil-square-o"></i> </a>
-                                    <a class="btn btn-danger" title="Apagar" href="Home?ac=exame_delete&id=${exame.id}"><i class="fa fa-trash"></i></a>
+                                    <button class="btn btn-danger" title="Apagar" data-toggle="modal" data-target="#modalExcluirTipoExame"
+                                            onclick="apagarTipoExame('${exame.id}', '${exame.nomeExame}');"><i class="fa fa-trash"></i></button>
                                 </td>
                             </tr>
                             </c:forEach>
@@ -52,3 +53,33 @@
     </div>
     <!-- /.col-lg-6 -->
 </div>
+
+<div class="modal fade" id="modalExcluirTipoExame" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Apagar Tipo de Exame</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          Deseja realmente apagar o tipo de exame <label id="nomeTipoExame"></label>
+      </div>
+      <div class="modal-footer">
+          <form action="Home?ac=apagar_Tipoexame" method="POST">
+            <input type="hidden" name="cpIdTipoExame" id="idTipoExame"/>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            <input type="submit" class="btn btn-danger" value="Apagar" />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    function apagarTipoExame(idTipoExame, NomeTipoExame){
+        $("#idTipoExame").val(idTipoExame);
+        $("#nomeTipoExame").html(NomeTipoExame);
+    }
+</script>

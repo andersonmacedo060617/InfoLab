@@ -61,9 +61,8 @@ public class CallClienteSave implements ICommand{
                     
                     new EnderecoDAO().SaveEndereco(endereco);
                     
-                    RequestDispatcher rd = request.getRequestDispatcher("Home?ac=cliente_Index");
                     request.setAttribute("msgSucesso", "Cliente Cadastrado com Sucesso!");
-                    rd.forward(request, response);
+                    response.sendRedirect("Home?ac=cliente_Index");
                 }catch(Exception ex){//Falha ao gravar
                     RequestDispatcher rd = request.getRequestDispatcher("template.jsp?page=clienteAdd");
                     request.setAttribute("erroGravar", "Ocorreu uma falha ao salvar o registro.<br> Por favor tente novamente.");

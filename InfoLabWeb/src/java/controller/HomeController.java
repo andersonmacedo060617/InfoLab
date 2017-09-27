@@ -17,6 +17,7 @@ import controller.action.impl.exame.CallExamePageAdd;
 import controller.action.impl.exame.CallExameSave;
 import controller.action.impl.exame.CallPageExamesIndex;
 import controller.action.impl.ExamesUsuario.CallPageMeusExames;
+import controller.action.impl.exame.CallExameDelete;
 import controller.action.impl.funcionario.CallFuncionarioPageAdd;
 import controller.action.impl.funcionario.CallFuncionarioSave;
 import java.io.IOException;
@@ -62,6 +63,7 @@ public class HomeController extends HttpServlet {
         comandos.put("exames_Index".toUpperCase(), new CallPageExamesIndex());
         comandos.put("exame_add".toUpperCase(), new CallExamePageAdd());
         comandos.put("tipoExame_Save".toUpperCase(), new CallExameSave());
+        comandos.put("apagar_Tipoexame".toUpperCase(), new CallExameDelete());
     }
     
     

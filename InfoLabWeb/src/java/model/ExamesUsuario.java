@@ -7,6 +7,7 @@ package model;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.Calendar;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -72,6 +73,26 @@ public class ExamesUsuario implements Serializable {
     @ManyToOne(optional = false)
     private Exame idexame;
 
+    @Basic(optional = true)
+    @Column(nullable = true)
+    private Boolean examePronto;
+
+    public double getValor() {
+        return valor;
+    }
+
+    public void setValor(double valor) {
+        this.valor = valor;
+    }
+
+    public Boolean getExamePronto() {
+        return examePronto;
+    }
+
+    public void setExamePronto(Boolean examePronto) {
+        this.examePronto = examePronto;
+    }
+    
     public Date getDataExame() {
         return dataExame;
     }
@@ -120,7 +141,12 @@ public class ExamesUsuario implements Serializable {
         this.idexame = idexame;
     }
     
-    
+    public void CalculaDataPrevistaEntrega(){
+        Calendar dataAdd = Calendar.getInstance();
+        dataAdd.setTime(this.dataExame);
+        dataAdd.add(Calendar.HOUR, this.idexame.getHorasEntrega());
+        this.dataEntregaPrevista = (Date)dataAdd.getTime();
+    }
     
     @Override
     public int hashCode() {

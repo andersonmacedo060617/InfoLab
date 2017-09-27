@@ -3,8 +3,10 @@
     Created on : 26/09/2017, 21:35:58
     Author     : aluno
 --%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<fmt:setLocale value="pt-BR" />
 <div class="row">
     <div class="col-lg-12">
         <div class="panel panel-default">
@@ -31,9 +33,9 @@
                             <tr>
                                 <td>${exame.id}</td>
                                 <td>${exame.nomeExame}</td>
-                                <td>${exame.horasJejum}</td>
-                                <td>${exame.horasEntrega}</td>
-                                <td>R$ ${exame.valor}</td>
+                                <td>${exame.horasJejum} Horas</td>
+                                <td>${exame.horasEntrega} Horas</td>
+                                <td><fmt:formatNumber value="${exame.valor}" type="currency" /></td>
                                 <td align="center">
                                     <a class="btn btn-info" title="Visualizar" href="Home?ac=exame_view&id=${exame.id}"><i class="fa fa-eye"></i> </a>
                                     <a class="btn btn-warning" title="Alterar" href="Home?ac=exame_alter&id=${exame.id}"><i class="fa fa-pencil-square-o"></i> </a>

@@ -11,6 +11,8 @@ import controller.action.impl.funcionario.CallFuncionarioIndex;
 import controller.action.impl.CallLogOutUsuario;
 import controller.action.impl.CallLoginPage;
 import controller.action.impl.CallValidaAcesso;
+import controller.action.impl.ExamesUsuario.CallExameClienteAdd;
+import controller.action.impl.ExamesUsuario.CallExameClienteSave;
 import controller.action.impl.ExamesUsuario.CallPageExamesUsuarioIndex;
 import controller.action.impl.cliente.CallClientePageAdd;
 import controller.action.impl.cliente.CallClienteSave;
@@ -60,6 +62,8 @@ public class HomeController extends HttpServlet {
         //Exames Usuario
         comandos.put("meus_exames".toUpperCase(), new CallPageMeusExames());
         comandos.put("examesUsuario_Index".toUpperCase(), new CallPageExamesUsuarioIndex()); 
+        comandos.put("exame_cliente_add".toUpperCase(), new CallExameClienteAdd());
+        comandos.put("exame_cliente_save".toUpperCase(), new CallExameClienteSave());
         
         //Tipos de Exame
         comandos.put("exames_Index".toUpperCase(), new CallPageExamesIndex());

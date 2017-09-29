@@ -15,6 +15,12 @@
             
             <!-- /.panel-heading -->
             <div class="panel-body">
+                <c:if test="${requestScope.msgErro != null}" >
+                    <div class="alert alert-danger alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <strong>${requestScope.msgErro}</strong>
+                    </div>
+                </c:if>
                 <c:if test="${requestScope.msgSucesso != null}" >
                     <div class="alert alert-success alert-dismissible">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -40,7 +46,7 @@
                             <c:forEach items="${requestScope.lstClientes}" var="cliente">
                             <tr>
                                 <td>
-                                    <a class="btn btn-success" title="Cadastrar Exame" href="Home?ac=exame_cliente_add&id=${cliente.id}"><i class="fa fa-plus"></i> <i class="fa fa-list-alt"></i></a>
+                                    <a class="btn btn-success" title="Cadastrar Exame" href="Home?ac=exame_cliente_add&idCliente=${cliente.id}"><i class="fa fa-plus"></i> <i class="fa fa-list-alt"></i></a>
                                 </td>
                                 <td>${cliente.id}</td>
                                 <td>${cliente.nome}</td>
@@ -57,7 +63,6 @@
                                 <td align="center">
                                     <a class="btn btn-info" title="Visualizar" href="Home?ac=cliente_view&id=${cliente.id}"><i class="fa fa-eye"></i> </a>
                                     <a class="btn btn-warning" title="Alterar" href="Home?ac=cliente_alter&id=${cliente.id}"><i class="fa fa-pencil-square-o"></i> </a>
-                                    <a class="btn btn-danger" title="Apagar" href="Home?ac=cliente_delete&id=${cliente.id}"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
                             </c:forEach>

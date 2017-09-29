@@ -16,6 +16,12 @@
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
+                <c:if test="${requestScope.msgErro != null}" >
+                    <div class="alert alert-danger alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <strong>${requestScope.msgErro}</strong>
+                    </div>
+                </c:if>
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered table-hover">
                         <thead>
@@ -35,9 +41,9 @@
                             <tr>
                                 <td>${exameUsuario.id}</td>
                                 <td>${exameUsuario.idexame.nomeExame}</td>
-                                <td><fmt:formatDate value="${exameUsuario.dataExame}" /></td>
-                                <td><fmt:formatDate value="${exameUsuario.dataEntregaPrevista}" /></td>
-                                
+                                <td><fmt:formatDate value="${exameUsuario.dataExame}" pattern="dd/MM/yyyy HH:mm" /></td>
+                                <td><fmt:formatDate value="${exameUsuario.dataEntregaPrevista}" pattern="dd/MM/yyyy HH:mm" /></td>
+                                <td></td>
                                 <td align="center">
                                     <a class="btn btn-info" title="Visualizar" href="Home?ac=exame_view&id=${exameUsuario.id}"><i class="fa fa-eye"></i> </a>
                                     <a class="btn btn-warning" title="Alterar" href="Home?ac=exame_alter&id=${exameUsuario.id}"><i class="fa fa-pencil-square-o"></i> </a>

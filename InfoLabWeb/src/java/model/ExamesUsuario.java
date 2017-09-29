@@ -6,7 +6,7 @@
 package model;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import java.util.Calendar;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -19,6 +19,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import org.eclipse.persistence.jpa.jpql.parser.DateTime;
 
 /**
@@ -27,7 +29,8 @@ import org.eclipse.persistence.jpa.jpql.parser.DateTime;
  */
 @Entity
 @NamedQueries({
-    @NamedQuery(name = "ExameUsuario.findAllExamesUsuario", query = "SELECT eu FROM ExamesUsuario eu INNER JOIN Exame e INNER JOIN Usuario u"),
+    @NamedQuery(name = "ExameUsuario.findAllExamesUsuario", query = "SELECT eu FROM ExamesUsuario eu INNER JOIN Exame e INNER JOIN Usuario u"
+            + " WHERE eu.idusuario.id = u.id AND eu.idexame.id = e.id"),
     
 })
 public class ExamesUsuario implements Serializable {
@@ -47,18 +50,22 @@ public class ExamesUsuario implements Serializable {
 
     @Basic(optional = false)
     @Column(nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date dataExame;
     
     @Basic(optional = false)
     @Column(nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date dataEntregaPrevista;
     
     @Basic(optional = true)
     @Column(nullable = true)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date dataEntregaConcluida;
     
     @Basic(optional = true)
     @Column(nullable = true)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date dataExamePronto;
     
     @Basic(optional = true)

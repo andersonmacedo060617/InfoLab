@@ -4,8 +4,7 @@
  * and open the template in the editor.
  */
 package model;
-
-import com.sun.org.glassfish.gmbal.IncludeSubclass;
+ 
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;

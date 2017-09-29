@@ -26,4 +26,18 @@ public class ExameUsuarioDAO extends BaseDAO{
             this.close();
         }
     }
+    
+    public void SaveExame(ExamesUsuario exameUsuario){
+        this.open();
+        try{
+            em.getTransaction().begin();
+            
+            em.persist(exameUsuario);
+            em.getTransaction().commit();
+        }catch(Exception ex){
+            throw ex;
+        }finally{
+            close();
+        }
+    }
 }

@@ -20,9 +20,11 @@ public class CallValidaAcesso implements ICommand{
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        
         String login = request.getParameter("cpLogin");
         String senha = request.getParameter("cpSenha");
-        
+        try{
+            
         Usuario user = new UsuarioDAO().login(login, senha);
         
         if(user != null){
@@ -32,6 +34,10 @@ public class CallValidaAcesso implements ICommand{
         }else{
             request.setAttribute("erro", "Login ou senha Incorreta!!!");
             new CallLoginPage().execute(request, response);
+        }
+        
+        }catch(Exception ex){
+            throw ex;
         }
     }
     

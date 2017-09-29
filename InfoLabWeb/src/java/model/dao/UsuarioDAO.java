@@ -64,13 +64,17 @@ public class UsuarioDAO extends BaseDAO{
         }
     }
     
-    public List<Usuario> findClienteById(int Id) {
+    public Usuario findClienteById(int Id) {
         this.open();
         
         try{
             Query q = em.createNamedQuery("Usuario.findClienteById");
             q.setParameter("id", Id);
-            return q.getResultList();
+            return (Usuario) q.getSingleResult();
+        }catch(NoResultException ex){
+            return null;
+        }catch(NonUniqueResultException ex){
+            return null;
         }finally{
             this.close();
         }
@@ -89,13 +93,17 @@ public class UsuarioDAO extends BaseDAO{
         }
     }
     
-    public List<Usuario> findFuncionarioById(int Id) {
+    public Usuario findFuncionarioById(int Id) {
         this.open();
         
         try{
             Query q = em.createNamedQuery("Usuario.findFuncionarioById");
             q.setParameter("id", Id);
-            return q.getResultList();
+            return (Usuario) q.getSingleResult();
+        }catch(NoResultException ex){
+            return null;
+        }catch(NonUniqueResultException ex){
+            return null;
         }finally{
             this.close();
         }

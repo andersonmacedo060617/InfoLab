@@ -1,12 +1,12 @@
 <%-- 
-    Document   : examesUsuarioIndex
-    Created on : 27/09/2017, 07:26:19
-    Author     : Anderson2
+    Document   : meusExames
+    Created on : 29/09/2017, 21:59:43
+    Author     : aluno
 --%>
-<!DOCTYPE html>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <fmt:setLocale value="pt-BR" />
 <div class="row">
     <div class="col-lg-12">
@@ -28,8 +28,6 @@
                             <tr>
                                 <th>Codigo</th>
                                 <th>Nome do Exame</th>
-                                <th>Codigo do Cliente</th>
-                                <th>Nome do Cliente</th>
                                 <th>Data do Exame</th>
                                 <th>Data Prevista para Entrega</th>
                                 <th>Exame Pronto?</th>
@@ -40,12 +38,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <c:forEach items="${requestScope.lstExamesUsuario}" var="exameUsuario">
+                            <c:forEach items="${requestScope.meusExames}" var="exameUsuario">
                             <tr>
                                 <td>${exameUsuario.id}</td>
                                 <td>${exameUsuario.idexame.nomeExame}</td>
-                                <td>${exameUsuario.idusuario.id}</td>
-                                <td>${exameUsuario.idusuario.nome}</td>
                                 <td><fmt:formatDate value="${exameUsuario.dataExame}" pattern="dd/MM/yyyy HH:mm" /></td>
                                 <td><fmt:formatDate value="${exameUsuario.dataEntregaPrevista}" pattern="dd/MM/yyyy HH:mm" /></td>
                                 <td>
@@ -75,9 +71,6 @@
                                 </td>
                                 <td align="center">
                                     <a class="btn btn-info" title="Visualizar" href="Home?ac=exame_cliente_view&idExameCliente=${exameUsuario.id}"><i class="fa fa-eye"></i> </a>
-                                    <c:if test="${exameUsuario.dataEntregaConcluida == null}">
-                                        <a class="btn btn-warning" title="Entregar Exame" href="Home?ac=exame_cliente_entregar&idExameCliente=${exameUsuario.id}"><i class="fa fa-envelope"></i></a>
-                                    </c:if>
                                 </td>
                             </tr>
                             </c:forEach>
@@ -92,3 +85,4 @@
     </div>
     <!-- /.col-lg-6 -->
 </div>
+

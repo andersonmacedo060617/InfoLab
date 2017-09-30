@@ -6,9 +6,12 @@
 package model.dao;
 
 import java.util.List;
+import javax.persistence.NoResultException;
+import javax.persistence.NonUniqueResultException;
 import javax.persistence.Query;
 import model.Exame;
 import model.ExamesUsuario;
+import model.Usuario;
 
 /**
  *
@@ -21,6 +24,18 @@ public class ExameUsuarioDAO extends BaseDAO{
         
         try{
             Query q = em.createNamedQuery("ExameUsuario.findAllExamesUsuario");
+            return q.getResultList();
+        }finally{
+            this.close();
+        }
+    }
+    
+    public List<ExamesUsuario> findAllExamesUsuarioByIdUsuario(int IdUsuario) {
+        this.open();
+        
+        try{
+            Query q = em.createNamedQuery("ExameUsuario.findAllExamesUsuarioByIdUsuario");
+            q.setParameter("id", IdUsuario);
             return q.getResultList();
         }finally{
             this.close();
@@ -40,4 +55,36 @@ public class ExameUsuarioDAO extends BaseDAO{
             close();
         }
     }
+    
+    public ExamesUsuario findExameClienteById(int Id) {
+        this.open();
+        
+        try{
+            Query q = em.createNamedQuery("ExameUsuario.findExamesUsuarioById");
+            q.setParameter("id", Id);
+            return (ExamesUsuario) q.getSingleResult();
+        }catch(NoResultException ex){
+            return null;
+        }catch(NonUniqueResultException ex){
+            return null;
+        }finally{
+            this.close();
+        }
+        
+    }
+    
+    public void UpdateExameUsuario(ExamesUsuario exameCliente){
+        this.open();
+        try{
+            em.getTransaction().begin();
+            
+            em.merge(exameCliente);
+            em.getTransaction().commit();
+        }catch(Exception ex){
+            throw ex;
+        }finally{
+            close();
+        }
+    }
+    
 }

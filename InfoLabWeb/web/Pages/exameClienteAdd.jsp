@@ -41,7 +41,7 @@
                                            value="${requestScope.retornoExameCliente !=null ? requestScope.retornoExameCliente.dataExame : ""}"/>
                             </div>
                             <div class="form-group col-lg-4">
-                                Horas em Jejum <input type="time" name="cpHoraExame" class="form-control"
+                                Hora Exame <input type="time" name="cpHoraExame" class="form-control"
                                            value="${requestScope.retornoExameCliente !=null ? requestScope.retornoExameCliente.dataEntregaPrevista : ""}"/>
                             </div>
                             

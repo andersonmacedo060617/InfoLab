@@ -62,7 +62,8 @@ public class CallExameClienteSave implements ICommand{
                 exameCli.CalculaDataPrevistaEntrega();
                 
                 exameCli.setValor(exameCli.getIdexame().getValor());
-                
+                exameCli.setExamePronto(false);
+                exameCli.setExamePago(false);
                 new ExameUsuarioDAO().SaveExame(exameCli);
                 
                 RequestDispatcher rd = request.getRequestDispatcher("template.jsp?page=exibirExameCliente");

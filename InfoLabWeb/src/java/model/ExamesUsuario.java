@@ -31,6 +31,10 @@ import org.eclipse.persistence.jpa.jpql.parser.DateTime;
 @NamedQueries({
     @NamedQuery(name = "ExameUsuario.findAllExamesUsuario", query = "SELECT eu FROM ExamesUsuario eu INNER JOIN Exame e INNER JOIN Usuario u"
             + " WHERE eu.idusuario.id = u.id AND eu.idexame.id = e.id"),
+    @NamedQuery(name = "ExameUsuario.findExamesUsuarioById", query = "SELECT eu FROM ExamesUsuario eu INNER JOIN Exame e INNER JOIN Usuario u"
+            + " WHERE eu.idusuario.id = u.id AND eu.idexame.id = e.id AND eu.id = :id"),
+    @NamedQuery(name = "ExameUsuario.findAllExamesUsuarioByIdUsuario", query = "SELECT eu FROM ExamesUsuario eu INNER JOIN Exame e INNER JOIN Usuario u"
+            + " WHERE eu.idusuario.id = u.id AND eu.idexame.id = e.id AND u.id = :id"),
     
 })
 public class ExamesUsuario implements Serializable {
@@ -83,6 +87,10 @@ public class ExamesUsuario implements Serializable {
     @Basic(optional = true)
     @Column(nullable = true)
     private Boolean examePronto;
+    
+    @Basic(optional = true)
+    @Column(nullable = true)
+    private Boolean examePago;
 
     public double getValor() {
         return valor;
@@ -154,6 +162,16 @@ public class ExamesUsuario implements Serializable {
         dataAdd.add(Calendar.HOUR, this.idexame.getHorasEntrega());
         this.dataEntregaPrevista = (Date)dataAdd.getTime();
     }
+
+    public Boolean getExamePago() {
+        return examePago;
+    }
+
+    public void setExamePago(Boolean examePago) {
+        this.examePago = examePago;
+    }
+    
+    
     
     @Override
     public int hashCode() {

@@ -54,10 +54,10 @@
                                 <td>${cliente.login}</td>
                                 <td>${cliente.sexo}</td>
                                 <td><c:if test="${cliente.ativo}">
-                                        <i class="fa fa-check-square-o" style="color: green;" title="Sim"></i>
+                                        <i class="fa fa-check-square-o fa-2x" style="color: green;" title="Sim"></i>
                                     </c:if>
                                     <c:if test="${!cliente.ativo}">
-                                        <i class="fa fa-square-o" style="color: red;" title="Não"></i>
+                                        <i class="fa fa-square-o fa-2x" style="color: red;" title="Não"></i>
                                     </c:if>
                                 </td>
                                 <td align="center">

@@ -12,7 +12,12 @@ import controller.action.impl.CallLogOutUsuario;
 import controller.action.impl.CallLoginPage;
 import controller.action.impl.CallValidaAcesso;
 import controller.action.impl.ExamesUsuario.CallExameClienteAdd;
+import controller.action.impl.ExamesUsuario.CallExameClienteEntregar;
+import controller.action.impl.ExamesUsuario.CallExameClientePagar;
+import controller.action.impl.ExamesUsuario.CallExameClienteProntoPage;
 import controller.action.impl.ExamesUsuario.CallExameClienteSave;
+import controller.action.impl.ExamesUsuario.CallExameClienteViewMyExamesPage;
+import controller.action.impl.ExamesUsuario.CallExameClienteViewPage;
 import controller.action.impl.ExamesUsuario.CallPageExamesUsuarioIndex;
 import controller.action.impl.cliente.CallClientePageAdd;
 import controller.action.impl.cliente.CallClienteSave;
@@ -64,6 +69,11 @@ public class HomeController extends HttpServlet {
         comandos.put("examesUsuario_Index".toUpperCase(), new CallPageExamesUsuarioIndex()); 
         comandos.put("exame_cliente_add".toUpperCase(), new CallExameClienteAdd());
         comandos.put("exame_cliente_save".toUpperCase(), new CallExameClienteSave());
+        comandos.put("exame_cliente_view".toUpperCase(), new CallExameClienteViewPage());
+        comandos.put("exame_cliente_pagar".toUpperCase(), new CallExameClientePagar()); 
+        comandos.put("exame_cliente_pronto".toUpperCase(), new CallExameClienteProntoPage()); 
+        comandos.put("exame_cliente_entregar".toUpperCase(), new CallExameClienteEntregar()); 
+        comandos.put("meus_exames".toUpperCase(), new CallExameClienteViewMyExamesPage()); 
         
         //Tipos de Exame
         comandos.put("exames_Index".toUpperCase(), new CallPageExamesIndex());

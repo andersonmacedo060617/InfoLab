@@ -12,13 +12,10 @@
         <ul class="nav" id="side-menu">
             
             <li>
-                <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                <a href="Home"><i class="fa fa-dashboard fa-fw"></i> Home</a>
             </li>
             <li>
-                <a href="tables.html"><i class="fa fa-table fa-fw"></i> Agendar Exame</a>
-            </li>
-            <li>
-                <a href="Home/ac=meus_exames"><i class="fa fa-files-o fa-fw"></i> Meus Exames</a>
+                <a href="Home?ac=meus_exames"><i class="fa fa-files-o fa-fw"></i> Meus Exames</a>
                 
                 <!-- /.nav-second-level -->
             </li>

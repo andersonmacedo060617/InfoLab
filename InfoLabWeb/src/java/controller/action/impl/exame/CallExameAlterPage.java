@@ -3,21 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller.action.impl.ExamesUsuario;
+package controller.action.impl.exame;
 
 import controller.action.ICommand;
 import controller.action.impl.CallHomePage;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.ExamesUsuario;
+import model.Exame;
 import model.Usuario;
-import model.dao.ExameUsuarioDAO;
+import model.dao.ExameDAO;
 
 /**
  *
  * @author aluno
  */
-public class CallExameClientePagar implements ICommand{
+public class CallExameAlterPage implements ICommand{
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -28,16 +29,15 @@ public class CallExameClientePagar implements ICommand{
             request.setAttribute("erro", "Sem acesso");
             new CallHomePage().execute(request, response);
         }else{
-            int idExameCliente = Integer.parseInt(request.getParameter("idExameCliente"));
-            ExamesUsuario exameCliente = new ExameUsuarioDAO().findExameClienteById(idExameCliente);
-            if(exameCliente == null){
-                request.setAttribute("erro", "Sem acesso");
-                new CallHomePage().execute(request, response);
+            int idTipoExame = Integer.parseInt(request.getParameter("idTipoExame"));
+            Exame tipoExame = new ExameDAO().findExameById(idTipoExame);
+            if(tipoExame != null){
+                RequestDispatcher rd = request.getRequestDispatcher("template.jsp?page=alteraTipoExame");
+                request.setAttribute("tipoExame", tipoExame);   
+                rd.forward(request, response);
             }else{
-                exameCliente.setExamePago(Boolean.TRUE);
-                new ExameUsuarioDAO().UpdateExameUsuario(exameCliente);
-                
-                new CallPageExamesUsuarioIndex().execute(request, response);
+                request.setAttribute("msgErro", "Registro não encontrado");
+                new CallPageExamesIndex().execute(request, response);
             }
         }
     }

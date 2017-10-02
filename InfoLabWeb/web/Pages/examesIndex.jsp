@@ -15,6 +15,12 @@
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
+                <c:if test="${requestScope.msgErro != null}" >
+                    <div class="alert alert-danger alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <strong>${requestScope.msgErro}</strong>
+                    </div>
+                </c:if>
                 <a class="btn btn-success" title="Novo Exame" href="Home?ac=exame_add"><i class="fa fa-plus"></i></a>
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered table-hover">
@@ -37,8 +43,8 @@
                                 <td>${exame.horasEntrega} Horas</td>
                                 <td><fmt:formatNumber value="${exame.valor}" type="currency" /></td>
                                 <td align="center">
-                                    <a class="btn btn-info" title="Visualizar" href="Home?ac=exame_view&id=${exame.id}"><i class="fa fa-eye"></i> </a>
-                                    <a class="btn btn-warning" title="Alterar" href="Home?ac=exame_alter&id=${exame.id}"><i class="fa fa-pencil-square-o"></i> </a>
+                                    <a class="btn btn-info" title="Visualizar" href="Home?ac=exame_view&idTipoExame=${exame.id}"><i class="fa fa-eye"></i> </a>
+                                    <a class="btn btn-warning" title="Alterar" href="Home?ac=exame_alter&idTipoExame=${exame.id}"><i class="fa fa-pencil-square-o"></i> </a>
                                     <button class="btn btn-danger" title="Apagar" data-toggle="modal" data-target="#modalExcluirTipoExame"
                                             onclick="apagarTipoExame('${exame.id}', '${exame.nomeExame}');"><i class="fa fa-trash"></i></button>
                                 </td>

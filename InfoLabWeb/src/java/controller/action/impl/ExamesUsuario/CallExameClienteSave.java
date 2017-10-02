@@ -29,6 +29,7 @@ public class CallExameClienteSave implements ICommand{
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        request.setCharacterEncoding("UTF-8");
         if(request.getSession().getAttribute("user") == null){
             new CallHomePage().execute(request, response);
         }else if(((Usuario)request.getSession().getAttribute("user")).isCliente()){

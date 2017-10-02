@@ -21,11 +21,13 @@ import controller.action.impl.ExamesUsuario.CallExameClienteViewPage;
 import controller.action.impl.ExamesUsuario.CallPageExamesUsuarioIndex;
 import controller.action.impl.cliente.CallClientePageAdd;
 import controller.action.impl.cliente.CallClienteSave;
+import controller.action.impl.exame.CallExameAlterar;
 import controller.action.impl.exame.CallExamePageAdd;
 import controller.action.impl.exame.CallExameSave;
 import controller.action.impl.exame.CallPageExamesIndex;
-import controller.action.impl.ExamesUsuario.CallPageMeusExames;
+import controller.action.impl.exame.CallExameAlterPage;
 import controller.action.impl.exame.CallExameDelete;
+import controller.action.impl.exame.CallExameView;
 import controller.action.impl.funcionario.CallFuncionarioPageAdd;
 import controller.action.impl.funcionario.CallFuncionarioSave;
 import java.io.IOException;
@@ -65,7 +67,7 @@ public class HomeController extends HttpServlet {
         comandos.put("FUNCIONARIO_SAVE".toUpperCase(), new CallFuncionarioSave());
         
         //Exames Usuario
-        comandos.put("meus_exames".toUpperCase(), new CallPageMeusExames());
+
         comandos.put("examesUsuario_Index".toUpperCase(), new CallPageExamesUsuarioIndex()); 
         comandos.put("exame_cliente_add".toUpperCase(), new CallExameClienteAdd());
         comandos.put("exame_cliente_save".toUpperCase(), new CallExameClienteSave());
@@ -80,12 +82,16 @@ public class HomeController extends HttpServlet {
         comandos.put("exame_add".toUpperCase(), new CallExamePageAdd());
         comandos.put("tipoExame_Save".toUpperCase(), new CallExameSave());
         comandos.put("apagar_Tipoexame".toUpperCase(), new CallExameDelete());
+        comandos.put("exame_view".toUpperCase(), new CallExameView());
+        comandos.put("exame_alter".toUpperCase(), new CallExameAlterPage());
+        comandos.put("tipoExame_Altera".toUpperCase(), new CallExameAlterar());
     }
     
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         
         String acao = request.getParameter("ac");
         acao = acao== null?"login":acao;

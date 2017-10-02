@@ -43,6 +43,20 @@ public class ExameDAO extends BaseDAO{
         }
     }
     
+    public void AlterExame(Exame exame){
+        this.open();
+        try{
+            em.getTransaction().begin();
+            
+            em.merge(exame);
+            em.getTransaction().commit();
+        }catch(Exception ex){
+            throw ex;
+        }finally{
+            close();
+        }
+    }
+    
     public Exame findExameById(int IdExame){
         this.open();
         

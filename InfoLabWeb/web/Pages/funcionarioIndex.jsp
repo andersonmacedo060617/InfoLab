@@ -46,7 +46,6 @@
                                 <td align="center">
                                     <a class="btn btn-info" title="Visualizar" href="Home?ac=funcionario_view&id=${funcionario.id}"><i class="fa fa-eye"></i> </a>
                                     <a class="btn btn-warning" title="Alterar" href="Home?ac=funcionario_alter&id=${funcionario.id}"><i class="fa fa-pencil-square-o"></i> </a>
-                                    <a class="btn btn-danger" title="Apagar" href="Home?ac=funcionario_delete&id=${funcionario.id}"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
                             </c:forEach>

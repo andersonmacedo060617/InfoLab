@@ -24,7 +24,7 @@ public class UsuarioDAO extends BaseDAO{
         
         try{
             Query q = em.createQuery("select u from Usuario u where "
-                + " u.login = :login and u.senha = :senha");
+                + " u.login = :login and u.senha = :senha and u.ativo = 1");
         
             q.setParameter("login", login);
             q.setParameter("senha", senha);
